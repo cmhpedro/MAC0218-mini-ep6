@@ -1,0 +1,6 @@
+docker image build . -t custom-caddy:1.0
+docker container run -d --name caddy -p 3000:80 custom-caddy:1.0
+
+docker container stop caddy
+docker container rm caddy
+docker container run -d --name caddy -p 3000:80 -v ./src/pages:/usr/src/pages custom-caddy:1.0
